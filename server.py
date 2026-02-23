@@ -32,8 +32,9 @@ async def organization_enrichment(query: OrganizationEnrichmentQuery) -> Optiona
 @mcp.tool()
 async def people_search(query: PeopleSearchQuery) -> Optional[dict]:
     """
-    Use the People Search endpoint to find people.
-    https://docs.apollo.io/reference/people-search
+    Use the People API Search endpoint to find net new people in the Apollo database.
+    Does not return email or phone; use People Enrichment to get contact details.
+    https://docs.apollo.io/reference/people-api-search
     """
     result = await apollo_client.people_search(query)
     return result.model_dump() if result else None

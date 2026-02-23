@@ -44,10 +44,10 @@ class ApolloClient:
 
     async def people_search(self, query: PeopleSearchQuery) -> Optional[PeopleSearchResponse]:
         """
-        Use the People Search endpoint to find people.
-        https://docs.apollo.io/reference/people-search
+        Use the People API Search endpoint to find net new people in the Apollo database.
+        https://docs.apollo.io/reference/people-api-search
         """
-        url = f"{self.base_url}/mixed_people/search"
+        url = f"{self.base_url}/mixed_people/api_search"
         async with httpx.AsyncClient() as client:
             response = await client.post(url, json=query.model_dump(), headers=self.headers)
             if response.status_code == 200:
